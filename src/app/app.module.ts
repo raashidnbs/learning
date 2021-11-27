@@ -8,6 +8,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
@@ -17,6 +19,8 @@ const materialModules = [
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
+  MatChipsModule,
+  MatIconModule
 ];
 
 @NgModule({

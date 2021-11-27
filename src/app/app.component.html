@@ -337,20 +337,48 @@
 
     <div class="margin-top-20">
       <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Person Name</mat-label>
-          <input type="text"
-                 placeholder="Pick one"
-                 aria-label="Name"
-                 matInput
-                 [formControl]="myControl"
-                 [matAutocomplete]="auto">
-          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option *ngFor="let person of filteredPersons | async" [value]="person">
-                {{person.name}}
-              </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Person Name</mat-label>
+            <input type="text"
+                   placeholder="Pick one"
+                   aria-label="Name"
+                   matInput
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="updatePerson($event)" [displayWith]="displayFn">
+                <mat-option *ngFor="let person of filteredPersons | async" [value]="person">
+                  {{person.name}}
+                </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>  
+        </div>
+        
+        <div>
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Favorite Fruits</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                       [removable]="removable" (removed)="removeFruit(fruit)">
+                {{fruit}}
+                <button matChipRemove *ngIf="removable">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="New fruit..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="addFruit($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+        
+        
+
+        <div>
+          <button type="button" (click)="printSelected()" mat-flat-button color="primary">Click Me</button>
+        </div>
       </form>
       
     </div>
