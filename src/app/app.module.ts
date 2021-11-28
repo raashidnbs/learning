@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const materialModules = [
@@ -20,7 +21,8 @@ const materialModules = [
   MatFormFieldModule,
   MatInputModule,
   MatChipsModule,
-  MatIconModule
+  MatIconModule,
+  MatTableModule
 ];
 
 @NgModule({
