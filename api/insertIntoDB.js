@@ -1,7 +1,7 @@
 var faker = require('faker');
 var fs = require('fs');
 
-var database = { users: [] };
+var database = { users: [], courses: [] };
 
 for (var i = 1; i <= 100; i++) {
     database.users.push({
@@ -10,6 +10,13 @@ for (var i = 1; i <= 100; i++) {
         email: faker.internet.email(),
         username: faker.commerce.userName,
         password: faker.commerce.password,
+    });
+
+    database.courses.push({
+        id: i + 1,
+        userId: i,
+        courseName: faker.name.title,
+        creditHours: 3
     });
 }
 
